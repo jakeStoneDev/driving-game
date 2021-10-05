@@ -4,12 +4,39 @@
 <head>
   <title>Driving Game</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" href="https://use.typekit.net/mzs8tir.css">
 </head>
 
 <body>
-  <div class="container">
+  <div id="menu" class="mainMenu">
+    <div class="row">
+      <h1 class="mainTitle">Driving Game</h1>
+    </div>
+    <div class="row">
+      <h2 class="choose"><strong>(Choose your vehicle)</strong></h2>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <div id="container1" class="img-container">
+          <img width="200" id="car1" src="images/customcar.svg">
+        </div>
+        <p class="attributes">Speed: 3</p>
+      </div>
+      <div class="col-half">
+        <div id="container2" class="img-container">
+          <img width="200" id="car2" src="images/customcar.svg">
+        </div>
+        <p class="attributes">Speed: 5</p>
+      </div>
+    </div>
+  </div>
+  <div id="game" class="container">
     <div class="row">
       <h1 class="title">Driving Game</h1>
+    </div>
+    <div class="row">
+      <p class="exitGame">Press [y] to exit to menu</p>
     </div>
     <div class="row">
       <div class="race-track">

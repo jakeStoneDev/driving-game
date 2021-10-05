@@ -1,8 +1,79 @@
+body {
+  margin: none;
+  background-color: white;
+}
+
 .container {
+  display: none;
   width: 100%;
+
+  /*
+  display: flex;
+  */
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainMenu {
+  background-color: white;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 40px;
+}
+.img { width: 100%; }
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.col-half {
+  display: flex;
+  width: 30%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img-container {
+  display: flex;
+  padding: 5px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  border: black solid 2px;
+  background-color: lightslategray;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.img-container:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
+
+.start {
+  width: 200px;
+  height: 50px;
+  font-size: 2.5em;
+  background-color: white;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  margin-bottom: 100px;
+}
+
+.start:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
+
+.start:active {
+  background-color: green;
 }
 
 .race-track {
@@ -21,10 +92,41 @@
   height: auto;
 }
 
+.exitGame {
+  font-size: 1.2em;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
 .title {
   text-align: center;
   font-size: 3em;
   font-family: helvetica, sans-serif;
+  margin: 20px;
+}
+
+.choose {
+  text-align: center;
+  font-size: 2em;
+  font-family: helvetica, sans-serif;
+  margin-top: 100px;
+  font-weight: lighter;
+  border-radius: 5px;
+}
+
+.mainTitle {
+  text-align: center;
+  font-size: 9em;
+  font-family: parkside, cursive;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 80px;
+  border-bottom: double crimson 8px;
+}
+
+.attributes {
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 .north {
