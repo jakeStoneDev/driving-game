@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.race-track {
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  position: relative;
+  background-image: url(images/dock.svg);
+}
+
+#car {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 3em;
+  font-family: helvetica, sans-serif;
+}
