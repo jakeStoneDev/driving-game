@@ -29,20 +29,16 @@
 
 .north {
   transform: rotate(-90deg);
-  transition: ease-in-out 0.5s;
 }
 
 .south {
   transform: rotate(90deg);
-  transition: ease-in-out 0.5s;
 }
 
 .east {
   transform: rotate(0deg);
-  transition: ease-in-out 0.5s;
 }
 
 .west {
   transform: rotate(180deg);
-  transition: ease-in-out 0.5s;
 }
