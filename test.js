@@ -24,16 +24,16 @@ var carEvent = {
 
 function move() {
   if (car.className === 'east') {
-    x = x + 2;
+    x = x + 3;
   }
   if (car.className === 'south') {
-    y = y + 2;
+    y = y + 3;
   }
   if (car.className === 'west') {
-    x = x - 2;
+    x = x - 3;
   }
   if (car.className === 'north') {
-    y = y - 2;
+    y = y - 3;
   }
   car.style.left = x + 'px';
   car.style.top = y + 'px';
