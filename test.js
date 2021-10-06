@@ -6,8 +6,7 @@ var data = {
   speed: 3,
   userX: 0,
   userY: 0,
-  userSpeed: 1,
-  exitCar: false
+  userSpeed: 3
 };
 
 var stateJSON = JSON.stringify(data);
@@ -43,6 +42,8 @@ document.addEventListener('click', function (event) {
   if (event.target === pick1 || event.target === carBox1) {
     data.x = 0;
     data.y = 0;
+    data.userX = 0;
+    data.userY = 0;
     car.setAttribute('src', 'images/truck.svg');
     data.speed = 5;
     mainMenu.style.display = 'none';
@@ -54,6 +55,8 @@ document.addEventListener('click', function (event) {
   } else if (event.target === pick2 || event.target === carBox2) {
     data.x = 0;
     data.y = 0;
+    data.userX = 0;
+    data.userY = 0;
     car.setAttribute('src', 'images/customcar.svg');
     data.speed = 10;
     mainMenu.style.display = 'none';
@@ -65,6 +68,8 @@ document.addEventListener('click', function (event) {
   } else if (event.target === pick3 || event.target === carBox3) {
     data.x = 0;
     data.y = 0;
+    data.userX = 0;
+    data.userY = 0;
     car.setAttribute('src', 'images/fastback.svg');
     data.speed = 15;
     mainMenu.style.display = 'none';
@@ -101,7 +106,8 @@ var carEvent = {
   on: false
 };
 var userEvent = {
-  on: false
+  on: false,
+  active: false
 };
 
 function move() {
@@ -121,15 +127,18 @@ function move() {
 function moveUser() {
   if (user.className === 'east') {
     data.userX = data.userX + data.userSpeed;
-  } else if (user.className === 'south') {
+  }
+  if (user.className === 'south') {
     data.userY = data.userY + data.userSpeed;
-  } else if (user.className === 'west') {
+  }
+  if (user.className === 'west') {
     data.userX = data.userX - data.userSpeed;
-  } else if (user.className === 'north') {
+  }
+  if (user.className === 'north') {
     data.userY = data.userY - data.userSpeed;
   }
   user.style.left = data.userX + 'px';
-  user.style.top = data.userX + 'px';
+  user.style.top = data.userY + 'px';
 }
 
 var interval;
@@ -138,9 +147,10 @@ document.addEventListener('keydown', function (event) {
   if (event.key === 't') {
     carEvent.on = false;
     clearInterval(interval);
-    data.exitCar = true;
+    userEvent.active = true;
   }
-  if (data.exitCar === false) {
+
+  if (userEvent.active === false) {
     if (event.code === 'Space' && carEvent.on === false) {
       interval = setInterval(function () {
         move();
@@ -152,23 +162,25 @@ document.addEventListener('keydown', function (event) {
       clearInterval(interval);
     }
   }
-
-  if (data.exitCar === true) {
+  if (userEvent.active === true) {
     if (event.code === 'Space' && userEvent.on === false) {
       userInterval = setInterval(function () {
         moveUser();
       }, 14);
-
-      carEvent.on = true;
+      userEvent.on = true;
     } else if (event.code === 'Space' && userEvent.on === true) {
       userEvent.on = false;
       clearInterval(userInterval);
     }
-  } else if (event.code === 'KeyY') {
+  }
+
+  if (event.code === 'KeyY') {
     mainMenu.style.display = 'flex';
     gameScreen.style.display = 'none';
     data.x = 0;
     data.y = 0;
+    data.userX = 0;
+    data.userY = 0;
     car.style.top = '0';
     car.style.left = '0';
     user.style.top = '0';

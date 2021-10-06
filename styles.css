@@ -88,7 +88,11 @@ img {
   display: flex;
   position: relative;
   overflow: hidden;
+
+  /*
   background-image: url(images/dock.svg);
+  */
+  background-color: gainsboro;
 }
 
 #car {
@@ -103,6 +107,8 @@ img {
   position: absolute;
   top: 0;
   left: 0;
+  width: 50px;
+  height: 50px;
 }
 
 #car1 {
