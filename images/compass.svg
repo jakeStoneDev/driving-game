@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background: new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+  .st0 { fill: #fff; }
+  .st1 { fill: #fff; stroke: #000; stroke-miterlimit: 10; }
+  .st2 { fill: none; }
+  .st3 { font-family: 'MyriadPro-Regular'; }
+  .st4 { font-size: 11.0602px; }
+  .st5 { fill: #f00; }
+</style>
+<g>
+	<circle class="st0" cx="49.39" cy="50" r="16.92"/>
+	<path d="M49.39,33.57c9.06,0,16.43,7.37,16.43,16.43s-7.37,16.43-16.43,16.43S32.96,59.06,32.96,50S40.33,33.57,49.39,33.57
+		 M49.39,32.57c-9.62,0-17.43,7.8-17.43,17.43c0,9.62,7.8,17.43,17.43,17.43c9.62,0,17.43-7.8,17.43-17.43
+		C66.81,40.38,59.01,32.57,49.39,32.57L49.39,32.57z"/>
+</g>
+<polygon class="st1" points="42.44,29.04 56.34,29.04 49.39,3.85 "/>
+<polygon class="st1" points="71.88,43.05 71.88,56.95 97.07,50 "/>
+<polygon class="st1" points="56.34,70.96 42.44,70.96 49.39,96.15 "/>
+<polygon class="st1" points="26.9,56.95 26.9,43.05 1.71,50 "/>
+<rect x="45.84" y="18.68" class="st2" width="12.72" height="15.07"/>
+<text transform="matrix(1 0 0 1 45.8354 26.5352)" class="st3 st4">N</text>
+<rect x="47.24" y="72.84" class="st2" width="12.72" height="15.07"/>
+<text transform="matrix(1 0 0 1 47.2393 80.6943)" class="st3 st4">S</text>
+<rect x="73.39" y="45.59" class="st2" width="12.72" height="15.07"/>
+<text transform="matrix(1 0 0 1 73.3857 53.4385)" class="st3 st4">E</text>
+<rect x="16.87" y="45.59" class="st2" width="12.72" height="15.07"/>
+<text transform="matrix(1 0 0 1 16.8726 53.4385)" class="st3 st4">W</text>
+<circle class="st5" cx="89.64" cy="50" r="5.16"/>
+</svg>

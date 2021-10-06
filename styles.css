@@ -40,6 +40,7 @@ body {
 
 .img-container {
   width: 100%;
+  height: auto;
   display: flex;
   padding: 5px;
   margin-top: 15px;
@@ -86,6 +87,7 @@ img {
   height: 600px;
   display: flex;
   position: relative;
+  overflow: hidden;
   background-image: url(images/dock.svg);
 }
 
@@ -95,6 +97,12 @@ img {
   left: 0;
   width: 200px;
   height: 100px;
+}
+
+#user {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 #car1 {
