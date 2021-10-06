@@ -33,21 +33,26 @@ body {
 
 .col-half {
   display: flex;
-  width: 30%;
+  width: 25%;
   align-items: center;
   flex-direction: column;
 }
 
 .img-container {
+  width: 100%;
   display: flex;
   padding: 5px;
-  margin-top: 40px;
+  margin-top: 15px;
   margin-bottom: 10px;
   border: black solid 2px;
   background-color: lightslategray;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+}
+
+img {
+  width: 100%;
 }
 
 .img-container:hover {
@@ -89,7 +94,27 @@ body {
   top: 0;
   left: 0;
   width: 200px;
-  height: auto;
+  height: 100px;
+}
+
+#car1 {
+  display: block;
+}
+
+#car2 {
+  display: block;
+}
+
+#car3 {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .exitGame {
@@ -105,11 +130,19 @@ body {
   margin: 20px;
 }
 
+.item-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: helvetica, sans-serif;
+  margin-bottom: 5px;
+}
+
 .choose {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   font-family: helvetica, sans-serif;
-  margin-top: 100px;
+  margin-top: 120px;
+  margin-bottom: 20px;
   font-weight: lighter;
   border-radius: 5px;
 }
@@ -126,7 +159,9 @@ body {
 
 .attributes {
   margin-bottom: 20px;
-  font-size: 1.5em;
+  font-size: 1em;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .north {

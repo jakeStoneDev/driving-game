@@ -2,7 +2,8 @@
 var data = {
   view: 'mainMenu',
   x: 0,
-  y: 0
+  y: 0,
+  speed: 3
 };
 
 var stateJSON = JSON.stringify(data);
@@ -11,6 +12,7 @@ var previousUserInputJSON = localStorage.getItem('javascript-local-storage');
 if (previousUserInputJSON !== null) {
   previousUserInput = JSON.parse(previousUserInputJSON);
   data.view = previousUserInput.view;
+  data.speed = previousUserInput.speed;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -27,33 +29,49 @@ document.addEventListener('DOMContentLoaded', function () {
 // Main menu
 var pick1 = document.getElementById('car1');
 var pick2 = document.getElementById('car2');
+var pick3 = document.getElementById('car3');
 var carBox1 = document.getElementById('container1');
 var carBox2 = document.getElementById('container2');
+var carBox3 = document.getElementById('container3');
 var mainMenu = document.getElementById('menu');
 var gameScreen = document.getElementById('game');
 
 document.addEventListener('click', function (event) {
   if (event.target === pick1 || event.target === carBox1) {
-    car = pick1;
     data.x = 0;
     data.y = 0;
+    car.setAttribute('src', 'images/truck.svg');
+    data.speed = 5;
     mainMenu.style.display = 'none';
     gameScreen.style.display = 'flex';
     data.view = 'game';
     stateJSON = JSON.stringify(data);
     localStorage.setItem('javascript-local-storage', stateJSON);
-    location.reload();
+    localStorage.getItem('javascript-local-storage');
   }
   if (event.target === pick2 || event.target === carBox2) {
-    car = pick2;
     data.x = 0;
     data.y = 0;
+    car.setAttribute('src', 'images/customcar.svg');
+    data.speed = 10;
     mainMenu.style.display = 'none';
     gameScreen.style.display = 'flex';
     data.view = 'game';
     stateJSON = JSON.stringify(data);
     localStorage.setItem('javascript-local-storage', stateJSON);
-    location.reload();
+    localStorage.getItem('javascript-local-storage');
+  }
+  if (event.target === pick3 || event.target === carBox3) {
+    data.x = 0;
+    data.y = 0;
+    car.setAttribute('src', 'images/fastback.svg');
+    data.speed = 15;
+    mainMenu.style.display = 'none';
+    gameScreen.style.display = 'flex';
+    data.view = 'game';
+    stateJSON = JSON.stringify(data);
+    localStorage.setItem('javascript-local-storage', stateJSON);
+    localStorage.getItem('javascript-local-storage');
   }
 });
 
@@ -80,16 +98,16 @@ var carEvent = {
 
 function move() {
   if (car.className === 'east') {
-    data.x = data.x + 3;
+    data.x = data.x + data.speed;
   }
   if (car.className === 'south') {
-    data.y = data.y + 3;
+    data.y = data.y + data.speed;
   }
   if (car.className === 'west') {
-    data.x = data.x - 3;
+    data.x = data.x - data.speed;
   }
   if (car.className === 'north') {
-    data.y = data.y - 3;
+    data.y = data.y - data.speed;
   }
   car.style.left = data.x + 'px';
   car.style.top = data.y + 'px';
@@ -111,6 +129,10 @@ document.addEventListener('keydown', function (event) {
   if (event.code === 'KeyY') {
     mainMenu.style.display = 'flex';
     gameScreen.style.display = 'none';
+    data.x = 0;
+    data.y = 0;
+    car.style.top = '0';
+    car.style.left = '0';
     data.view = 'mainMenu';
     stateJSON = JSON.stringify(data);
     localStorage.setItem('javascript-local-storage', stateJSON);
