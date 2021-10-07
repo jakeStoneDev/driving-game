@@ -28,7 +28,7 @@ body {
 .row {
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 .col-half {
@@ -39,14 +39,14 @@ body {
 }
 
 .img-container {
-  width: 100%;
+  width: 80%;
   height: auto;
   display: flex;
   padding: 5px;
   margin-top: 15px;
   margin-bottom: 10px;
-  border: black solid 2px;
-  background-color: lightslategray;
+  border: black solid 3px;
+  background-color: white;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
@@ -61,38 +61,24 @@ img {
   background-color: gainsboro;
 }
 
-.start {
-  width: 200px;
-  height: 50px;
-  font-size: 2.5em;
-  background-color: white;
-  border-radius: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  margin-bottom: 100px;
-}
-
-.start:hover {
-  cursor: pointer;
-  background-color: gainsboro;
-}
-
-.start:active {
-  background-color: green;
-}
-
 .race-track {
   width: 1000px;
-  height: 600px;
+  height: 800px;
   display: flex;
   position: relative;
   overflow: hidden;
+  background-color: gainsboro;
+  border: 2px solid black;
 
   /*
   background-image: url(images/dock.svg);
   */
-  background-color: gainsboro;
+}
+
+#game {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 #car {
@@ -101,14 +87,17 @@ img {
   left: 0;
   width: 200px;
   height: 100px;
+  z-index: 5;
 }
 
 #user {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 5px;
+  left: 82px;
   width: 50px;
   height: 50px;
+  z-index: 4;
+  visibility: hidden;
 }
 
 #car1 {
@@ -163,12 +152,11 @@ img {
 
 .mainTitle {
   text-align: center;
-  font-size: 9em;
-  font-family: parkside, cursive;
+  font-size: 5em;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: 700;
   font-style: normal;
   margin-bottom: 80px;
-  border-bottom: double crimson 8px;
 }
 
 .attributes {
