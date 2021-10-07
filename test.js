@@ -56,7 +56,7 @@ document.addEventListener('click', function (event) {
     data.x = 0;
     data.y = 0;
     car.setAttribute('src', 'images/customcar.svg');
-    data.speed = 4;
+    data.speed = 3;
     mainMenu.style.display = 'none';
     gameScreen.style.display = 'flex';
     data.view = 'game';
@@ -67,7 +67,7 @@ document.addEventListener('click', function (event) {
     data.x = 0;
     data.y = 0;
     car.setAttribute('src', 'images/fastback.svg');
-    data.speed = 8;
+    data.speed = 4;
     mainMenu.style.display = 'none';
     gameScreen.style.display = 'flex';
     data.view = 'game';
@@ -115,6 +115,38 @@ var userEvent = {
 };
 
 function move() {
+  if (data.x < 0) {
+    data.x = 0;
+    return false;
+  }
+  if (data.x > 1010) {
+    data.x = 1010;
+    return false;
+  }
+  if (data.y < 37) {
+    data.y = 37;
+    return false;
+  }
+  if (data.y > 667) {
+    data.y = 667;
+    return false;
+  }
+  if (data.y > 510 && data.x > 624) {
+    if (userEvent.active === true) {
+      if (data.userX > 816) {
+        data.userX = 816;
+        return false;
+      }
+    }
+    if (userEvent.active !== true) {
+      if (car.className === 'south') {
+        car.className = 'north';
+      }
+      if (car.className === 'east') {
+        car.className = 'west';
+      }
+    }
+  }
   if (car.className === 'east') {
     data.x = data.x + data.speed;
   } else if (car.className === 'south') {
@@ -183,6 +215,7 @@ document.addEventListener('keydown', function (event) {
       data.userX = data.x + 147;
       data.userY = data.y + 28;
     }
+    localStorage.setItem('javascript-local-storage', stateJSON);
   }
 
   if (userEvent.active === false) {
