@@ -2,18 +2,66 @@
 <html>
 
 <head>
-  <title>Driving Game</title>
+  <title>Something in the Woods...</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" href="https://use.typekit.net/mzs8tir.css">
 </head>
 
 <body>
-  <div class="container">
+  <div id="menu" class="mainMenu">
     <div class="row">
-      <h1 class="title">Driving Game</h1>
+      <h1 class="mainTitle">Something in the Woods..</h1>
     </div>
     <div class="row">
+      <h2 class="choose"><strong>(Choose your vehicle)</strong></h2>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <div id="container1" class="img-container">
+          <img width="200" height="auto" id="car1" src="images/truck.svg">
+        </div>
+        <h3 class="item-title">Work Truck</h3>
+        <p class="attributes">Speed: Slow</p>
+      </div>
+      <div class="col-half">
+        <div id="container2" class="img-container">
+          <img width="200" height="auto" id="car2" src="images/customcar.svg">
+        </div>
+        <h3 class="item-title">Daily Driver</h3>
+        <p class="attributes">Speed: Medium</p>
+      </div>
+      <div class="col-half">
+        <div id="container3" class="img-container">
+          <img width="200" height="auto" id="car3" src="images/fastback.svg">
+        </div>
+        <h3 class="item-title">Fastback</h3>
+        <p class="attributes">Speed: Max</p>
+      </div>
+    </div>
+  </div>
+  <div id="game" class="container">
+    <div class="row">
       <div class="race-track">
+        <div class="info">
+          <div class="row">
+            <div class="vital-bar">
+              <div id="fuel-level">
+                <h3 class="info-title">Fuel</h3>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="vital-bar">
+              <div id="health-level">
+                <h3 class="info-title">Health</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="topper"></div>
         <img class="east" id="car" src="images/customcar.svg">
+        <img class="east" id="user" width="70px" height="auto" src="images/compass.svg">
       </div>
     </div>
   </div>

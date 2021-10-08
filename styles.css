@@ -1,16 +1,138 @@
+body {
+  margin: none;
+  background-color: white;
+}
+
 .container {
+  display: none;
   width: 100%;
+
+  /*
   display: flex;
+  */
   flex-direction: column;
   align-items: center;
 }
 
+.mainMenu {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+.img { width: 100%; }
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.col-half {
+  display: flex;
+  width: 25%;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img-container {
+  width: 80%;
+  height: auto;
+  display: flex;
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  border: black solid 3px;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+img {
+  width: 100%;
+}
+
+.img-container:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+}
+
+.topper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  left: 0;
+  background-image: url(images/treetopper.svg);
+}
+
+.info-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  font-family: helvetica, sans-serif;
+  text-align: center;
+}
+
+.vital-bar {
+  position: relative;
+  width: 157.5px;
+  border: 2px solid black;
+  margin-bottom: 2px;
+}
+
+#fuel-level {
+  width: 157.5px;
+  height: 18px;
+  border: 1px solid black;
+  background-color: rgb(255, 212, 98);
+}
+
+#health-level {
+  width: 157.5px;
+  height: 18px;
+  border: 1px solid black;
+  background-color: lightcoral;
+}
+
+.info {
+  background-color: transparent;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  width: 175px;
+  height: 50px;
+  z-index: 9;
+}
+
 .race-track {
-  width: 1000px;
-  height: 600px;
+  width: 1200px;
+  height: 800px;
   display: flex;
   position: relative;
+  overflow: hidden;
+  background-image: url(images/cabin.svg);
+  border: 2px solid black;
+
+  /*
   background-image: url(images/dock.svg);
+  */
+}
+
+#game {
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 #car {
@@ -18,13 +140,84 @@
   top: 0;
   left: 0;
   width: 200px;
-  height: auto;
+  height: 100px;
+  z-index: 5;
+}
+
+#user {
+  position: absolute;
+  top: 5px;
+  left: 82px;
+  width: 50px;
+  height: 50px;
+  z-index: 4;
+  visibility: hidden;
+}
+
+#car1 {
+  display: block;
+}
+
+#car2 {
+  display: block;
+}
+
+#car3 {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.exitGame {
+  font-size: 1.2em;
+  text-align: right;
+  margin-bottom: 5px;
 }
 
 .title {
   text-align: center;
   font-size: 3em;
   font-family: helvetica, sans-serif;
+  margin: 20px;
+}
+
+.item-title {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: helvetica, sans-serif;
+  margin-bottom: 5px;
+}
+
+.choose {
+  text-align: center;
+  font-size: 1.5em;
+  font-family: helvetica, sans-serif;
+  margin-top: 120px;
+  margin-bottom: 20px;
+  font-weight: lighter;
+  border-radius: 5px;
+}
+
+.mainTitle {
+  text-align: center;
+  font-size: 5em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-bottom: 80px;
+}
+
+.attributes {
+  margin-bottom: 20px;
+  font-size: 1em;
+  font-weight: 400;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .north {
