@@ -8,7 +8,8 @@ var data = {
   speed: 3,
   userX: 5,
   userY: 82,
-  userSpeed: 1
+  userSpeed: 1,
+  remainingFuel: 157.5
 };
 
 var stateJSON = JSON.stringify(data);
@@ -114,7 +115,19 @@ var userEvent = {
   active: false
 };
 
+var fuelBar = document.getElementById('fuel-level');
+var remainingFuel = data.remainingFuel;
+
+function fuelLevel() {
+  localStorage.getItem('javascript-local-storage');
+  fuelBar.style.width = remainingFuel;
+}
+
 function move() {
+  if (data.fuel === 0) {
+    fuelBar.style.width = '0';
+    return false;
+  }
   if (data.x < 0) {
     data.x = 0;
     return false;
@@ -140,10 +153,10 @@ function move() {
     }
     if (userEvent.active !== true) {
       if (car.className === 'south') {
-        car.className = 'north';
+        return false;
       }
       if (car.className === 'east') {
-        car.className = 'west';
+        return false;
       }
     }
   }
@@ -156,6 +169,8 @@ function move() {
   } else if (car.className === 'north') {
     data.y = data.y - data.speed;
   }
+  data.remainingFuel = data.remainingFuel - 0.02;
+  fuelBar.style.width = data.remainingFuel + 'px';
   car.style.left = data.x + 'px';
   car.style.top = data.y + 'px';
   user.style.left = data.x + 90 + 'px';
@@ -163,6 +178,7 @@ function move() {
   data.userX = data.x + 82;
   data.userY = data.y + 5;
   localStorage.setItem('javascript-local-storage', stateJSON);
+  fuelLevel();
 }
 
 function moveUser() {
@@ -183,6 +199,34 @@ function moveUser() {
   localStorage.setItem('javascript-local-storage', stateJSON);
 }
 
+function exitCar() {
+  if (car.className === 'east') {
+    user.className = 'east';
+    user.style.left = data.x + 90 + 'px';
+    user.style.top = data.y - 35 + 'px';
+    data.userX = data.x + 90;
+    data.userY = data.y - 35;
+  } else if (car.className === 'west') {
+    user.className = 'west';
+    user.style.left = data.x + 90 + 'px';
+    user.style.top = data.y + 92 + 'px';
+    data.userX = data.x + 92;
+    data.userY = data.y - 35;
+  } else if (car.className === 'north') {
+    user.className = 'north';
+    user.style.left = data.x + 17 + 'px';
+    user.style.top = data.y + 18 + 'px';
+    data.userX = data.x + 90;
+    data.userY = data.y - 35;
+  } else if (car.className === 'south') {
+    user.className = 'south';
+    user.style.left = data.x + 147 + 'px';
+    user.style.top = data.y + 28 + 'px';
+    data.userX = data.x + 147;
+    data.userY = data.y + 28;
+  }
+  localStorage.setItem('javascript-local-storage', stateJSON);
+}
 var interval;
 var userInterval;
 document.addEventListener('keydown', function (event) {
@@ -190,36 +234,12 @@ document.addEventListener('keydown', function (event) {
     carEvent.on = false;
     clearInterval(interval);
     userEvent.active = true;
-    if (car.className === 'east') {
-      user.className = 'east';
-      user.style.left = data.x + 90 + 'px';
-      user.style.top = data.y - 35 + 'px';
-      data.userX = data.x + 90;
-      data.userY = data.y - 35;
-    } else if (car.className === 'west') {
-      user.className = 'west';
-      user.style.left = data.x + 90 + 'px';
-      user.style.top = data.y + 92 + 'px';
-      data.userX = data.x + 92;
-      data.userY = data.y - 35;
-    } else if (car.className === 'north') {
-      user.className = 'north';
-      user.style.left = data.x + 17 + 'px';
-      user.style.top = data.y + 18 + 'px';
-      data.userX = data.x + 90;
-      data.userY = data.y - 35;
-    } else if (car.className === 'south') {
-      user.className = 'south';
-      user.style.left = data.x + 147 + 'px';
-      user.style.top = data.y + 28 + 'px';
-      data.userX = data.x + 147;
-      data.userY = data.y + 28;
-    }
-    localStorage.setItem('javascript-local-storage', stateJSON);
+    exitCar();
   }
 
   if (userEvent.active === false) {
     if (event.code === 'Space' && carEvent.on === false) {
+      localStorage.getItem('javascript-local-storage');
       interval = setInterval(function () {
         move();
       }, 14);
@@ -230,10 +250,11 @@ document.addEventListener('keydown', function (event) {
       clearInterval(interval);
     }
   }
+
   if (userEvent.active === true) {
     user.style.visibility = 'visible';
     if (event.code === 'Space' && userEvent.on === false) {
-      localStorage.getItem('javascript-local-storage');
+
       userInterval = setInterval(function () {
         moveUser();
       }, 14);
