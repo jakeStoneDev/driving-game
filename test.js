@@ -8,9 +8,12 @@ var data = {
   speed: 3,
   userX: 5,
   userY: 82,
+  bulletX: 0,
   userSpeed: 1,
   remainingFuel: 157.5
 };
+
+var carBullet = document.getElementById('bullet');
 
 var stateJSON = JSON.stringify(data);
 var previousUserInput;
@@ -108,11 +111,13 @@ function handleDirection(event) {
 }
 
 var carEvent = {
-  on: false
+  on: false,
+  gunOn: false
 };
 var userEvent = {
   on: false,
-  active: false
+  active: false,
+  touchesCar: false
 };
 
 var fuelBar = document.getElementById('fuel-level');
@@ -124,27 +129,24 @@ function fuelLevel() {
 }
 
 function move() {
-  if (data.fuel === 0) {
+  if (data.remainingFuel === 0) {
     fuelBar.style.width = '0';
+    carEvent.on = false;
+    clearInterval(interval);
     return false;
-  }
-  if (data.x < 0) {
+  } else if (data.x < 0) {
     data.x = 0;
     return false;
-  }
-  if (data.x > 1010) {
+  } else if (data.x > 1010) {
     data.x = 1010;
     return false;
-  }
-  if (data.y < 37) {
+  } else if (data.y < 37) {
     data.y = 37;
     return false;
-  }
-  if (data.y > 667) {
+  } else if (data.y > 667) {
     data.y = 667;
     return false;
-  }
-  if (data.y > 510 && data.x > 624) {
+  } else if (data.y > 510 && data.x > 624) {
     if (userEvent.active === true) {
       if (data.userX > 816) {
         data.userX = 816;
@@ -169,7 +171,7 @@ function move() {
   } else if (car.className === 'north') {
     data.y = data.y - data.speed;
   }
-  data.remainingFuel = data.remainingFuel - 0.02;
+  data.remainingFuel = data.remainingFuel - 0.1;
   fuelBar.style.width = data.remainingFuel + 'px';
   car.style.left = data.x + 'px';
   car.style.top = data.y + 'px';
@@ -177,6 +179,9 @@ function move() {
   user.style.top = data.y + 5 + 'px';
   data.userX = data.x + 82;
   data.userY = data.y + 5;
+  data.bulletX = data.x + 85;
+  carBullet.style.top = data.y + 47 + 'px';
+  carBullet.style.left = data.x + 148 + 'px';
   localStorage.setItem('javascript-local-storage', stateJSON);
   fuelLevel();
 }
@@ -227,6 +232,32 @@ function exitCar() {
   }
   localStorage.setItem('javascript-local-storage', stateJSON);
 }
+
+/*
+var gunInterval;
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'x' || carEvent.fireGun === true) {
+    clearInterval(gunInterval);
+    carEvent.fireGun = false;
+  } else if (event.key === 'x' || carEvent.fireGun === false) {
+    carEvent.fireGun = true;
+    gunInterval = setInterval(function () {
+      fireGun();
+    }, 20);
+  }
+});
+
+/*
+function fireGun() {
+  carBullet.style.visibility = 'visible';
+  if (data.bulletX > 1200) {
+    data.bulletX = data.x + 95;
+  }
+  data.bulletX = data.bulletX + 20;
+  carBullet.style.left = data.bulletX + 'px';
+}
+*/
+
 var interval;
 var userInterval;
 document.addEventListener('keydown', function (event) {
@@ -234,6 +265,17 @@ document.addEventListener('keydown', function (event) {
     carEvent.on = false;
     clearInterval(interval);
     userEvent.active = true;
+    if (userEvent.touchesCar === true) {
+      userEvent.active = false;
+      carEvent.on = true;
+      userEvent.touchesCar = false;
+      userEvent.active = false;
+      clearInterval(userInterval);
+      data.userX = data.x + 5;
+      data.userY = data.y + 82;
+    } else {
+      return false;
+    }
     exitCar();
   }
 
@@ -264,6 +306,34 @@ document.addEventListener('keydown', function (event) {
       clearInterval(userInterval);
     }
   }
+
+  var carProximity = {
+    x1: data.x,
+    y1: data.y,
+    x2: data.x + 200,
+    y2: data.y + 100
+  };
+  var userProximity = {
+    x1: data.userX,
+    y1: data.userY,
+    x2: data.userX + 50,
+    y2: data.userX + 50
+  };
+  // Check if rectangle a touches rectangle b
+  // Each object (a and b) should have 2 properties to represent the
+  // top-left corner (x1, y1) and 2 for the bottom-right corner (x2, y2).
+  function touches(a, b) {
+    // has horizontal gap
+    if (a.x1 > b.x2 || b.x1 > a.x2) return false;
+
+    // has vertical gap
+    if (a.y1 > b.y2 || b.y1 > a.y2) return false;
+    if (userEvent.active === true) {
+      userEvent.touchesCar = true;
+    }
+    return true;
+  }
+  touches(carProximity, userProximity);
 
   if (event.code === 'KeyY') {
     mainMenu.style.display = 'flex';
