@@ -8,12 +8,8 @@ var data = {
   speed: 3,
   userX: 5,
   userY: 82,
-  bulletX: 0,
-  userSpeed: 1,
-  remainingFuel: 157.5
+  userSpeed: 1
 };
-
-var carBullet = document.getElementById('bullet');
 
 var stateJSON = JSON.stringify(data);
 var previousUserInput;
@@ -120,17 +116,8 @@ var userEvent = {
   touchesCar: false
 };
 
-var fuelBar = document.getElementById('fuel-level');
-var remainingFuel = data.remainingFuel;
-
-function fuelLevel() {
-  localStorage.getItem('javascript-local-storage');
-  fuelBar.style.width = remainingFuel;
-}
-
 function move() {
   if (data.remainingFuel === 0) {
-    fuelBar.style.width = '0';
     carEvent.on = false;
     clearInterval(interval);
     return false;
@@ -171,19 +158,13 @@ function move() {
   } else if (car.className === 'north') {
     data.y = data.y - data.speed;
   }
-  data.remainingFuel = data.remainingFuel - 0.1;
-  fuelBar.style.width = data.remainingFuel + 'px';
   car.style.left = data.x + 'px';
   car.style.top = data.y + 'px';
   user.style.left = data.x + 90 + 'px';
   user.style.top = data.y + 5 + 'px';
   data.userX = data.x + 82;
   data.userY = data.y + 5;
-  data.bulletX = data.x + 85;
-  carBullet.style.top = data.y + 47 + 'px';
-  carBullet.style.left = data.x + 148 + 'px';
   localStorage.setItem('javascript-local-storage', stateJSON);
-  fuelLevel();
 }
 
 function moveUser() {
@@ -232,31 +213,6 @@ function exitCar() {
   }
   localStorage.setItem('javascript-local-storage', stateJSON);
 }
-
-/*
-var gunInterval;
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'x' || carEvent.fireGun === true) {
-    clearInterval(gunInterval);
-    carEvent.fireGun = false;
-  } else if (event.key === 'x' || carEvent.fireGun === false) {
-    carEvent.fireGun = true;
-    gunInterval = setInterval(function () {
-      fireGun();
-    }, 20);
-  }
-});
-
-/*
-function fireGun() {
-  carBullet.style.visibility = 'visible';
-  if (data.bulletX > 1200) {
-    data.bulletX = data.x + 95;
-  }
-  data.bulletX = data.bulletX + 20;
-  carBullet.style.left = data.bulletX + 'px';
-}
-*/
 
 var interval;
 var userInterval;

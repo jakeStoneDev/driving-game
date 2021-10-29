@@ -61,16 +61,6 @@ img {
   background-color: gainsboro;
 }
 
-.topper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 8;
-  top: 0;
-  left: 0;
-  background-image: url(images/treetopper.svg);
-}
-
 .info-title {
   position: absolute;
   top: -27%;
@@ -80,29 +70,6 @@ img {
   font-size: 1em;
   font-family: helvetica, sans-serif;
   text-align: center;
-}
-
-.vital-bar {
-  align-items: center;
-  display: flex;
-  position: relative;
-  width: 157.5px;
-  height: 18px;
-  background-color: transparent;
-  border: 3px solid black;
-  margin-bottom: 2px;
-}
-
-#fuel-level {
-  width: 157.5px;
-  height: 18px;
-  background-color: rgb(255, 212, 98);
-}
-
-#health-level {
-  width: 157.5px;
-  height: 18px;
-  background-color: lightcoral;
 }
 
 .info {
@@ -119,12 +86,12 @@ img {
 }
 
 .race-track {
-  width: 1200px;
-  height: 800px;
+  width: 800px;
+  height: 600px;
   display: flex;
   position: relative;
   overflow: hidden;
-  background-image: url(images/cabin.svg);
+  background-image: url(images/dock.svg);
   border: 2px solid black;
 
   /*
@@ -142,8 +109,6 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  right: 1000;
-  bottom: 800;
   width: 200px;
   height: 100px;
   z-index: 5;
